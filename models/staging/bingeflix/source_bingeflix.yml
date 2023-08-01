@@ -8,7 +8,7 @@ sources:
         description: ('{{doc("table_events")}}')
         columns:
           - name: session_id
-            description: The unique identifier of the session in the Bingeflix application.
+            description: '{{ doc("session_id") }}'
             tests:
               - not_null
 
@@ -28,7 +28,7 @@ sources:
               - not_null
 
           - name: event_id
-            description: The unique identifier of the event.
+            description: '{{ doc("event_id") }}'
             tests:
               - not_null
               - unique
@@ -82,7 +82,7 @@ sources:
             description: When the subscription ends. This value is NULL if the subscription is active.
 
           - name: subscription_id
-            description: The unique identifier for the subscription.
+            description: '{{ doc("subscription_id") }}'
             tests:
               - not_null
               - unique
