@@ -1,6 +1,6 @@
 models:
   - name: fct_events
-    description: This table contains information about the behavioral events.
+    description: '{{ doc("session_id") }}'
     columns:
       - name: session_id
         description: '{{ doc("session_id") }}'
