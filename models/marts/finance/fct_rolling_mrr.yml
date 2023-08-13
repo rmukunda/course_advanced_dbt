@@ -1,0 +1,17 @@
+models:
+  - name: fct_rolling_mrr
+    description: This model contains calculations for the monthly recurring revenue generated per user and subscription for each month.
+    columns:
+      - name: plan_name
+        description: The name of the subscription plan.
+        tests:
+          - not_null
+      - name: avg_2_periods_mrr
+        tests:
+          - not_null
+      - name: mrr
+        description: The amount of monthly recurring revenue generated from the subscription in a given month.
+      - name: date_month
+        description: The calendar month.
+        tests:
+          - not_null

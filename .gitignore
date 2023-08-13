@@ -3,4 +3,6 @@ dbt_packages/
 logs/
 Pipfile
 Pipfile.lock
+.sqlfluffignore
+
 .gitignore
