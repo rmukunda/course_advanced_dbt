@@ -1,5 +1,16 @@
 -- This model is created following the dbt MRR playbook: https://www.getdbt.com/blog/modeling-subscription-revenue/
 
+{{
+  config(
+    materialized='table'
+
+  )
+}}
+
+{% set dim_subscriptions = unit_testing_table_select(ref('dim_subscriptions'), ref('unit_test_subscriptions')) %}
+{% set dim_dates = unit_testing_table_select(ref('dim_dates'), ref('unit_test_dates')) %}
+
+
 WITH
 
 -- Import CTEs
@@ -15,7 +26,7 @@ monthly_subscriptions AS (
         {{ date_month('starts_at') }} AS start_month,
         {{ date_month('ends_at') }} AS end_month
     FROM
-        {{ ref('dim_subscriptions') }}
+        {{ dim_subscriptions }}
     WHERE
         billing_period = 'monthly'
 ),
@@ -25,7 +36,7 @@ months AS (
     SELECT
         calendar_date AS date_month
     FROM
-        {{ ref('dim_dates') }}
+        {{ dim_dates }}
     WHERE
         day_of_month = 1
 ),
